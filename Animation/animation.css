@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 80vh;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.box {
+    width: 10vw;
+    height: 10vh;
+    background-color: blueviolet;
+    animation-name: animationwala;
+    animation-duration: 10s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+}
+
+@keyframes animationwala {
+    0%{
+        transform: rotateX(70deg);
+    }
+    20%{
+        transform: translate(100px);
+    }
+    40%{
+        transform: scale(40deg);
+    }
+    60%{
+        transform: rotate(180deg);
+    }
+    80%{
+        transform: translate(150px);
+    }
+    100%{
+        transform: skew(80deg);
+    }
+}
