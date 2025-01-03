@@ -56,7 +56,7 @@ const ProductPage = (props: any) => {
     }
 
     // addto cart function 
-    const AddToCart = async (e) => {
+    const AddToCart = async (e:any) => {
         try {
           // Making the POST request to add the product to the cart
           const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/cart`, {
