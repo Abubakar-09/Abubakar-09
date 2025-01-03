@@ -38,7 +38,7 @@ export default async function Home() {
       </div>
 
       <div className="BestProducts flex justify-between flex-wrap gap-6">
-        {products.map((product) => (
+        {products.map((product:any) => (
           <Link href={`${product.name}`} key={product.id}>
             <div className="Product w-full sm:w-[270px] h-[350px] flex flex-col gap-3 items-center text-center">
               <div className="w-full sm:w-[270px] h-[250px] hover:scale-105 bg-[#F5F5F5] rounded relative">
