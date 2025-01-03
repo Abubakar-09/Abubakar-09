@@ -2,9 +2,29 @@ import Image from "next/image";
 import Header from "./components/Header";
 import Link from "next/link";
 
+// Define types for Product and Category
+interface Product {
+  id: number;
+  name: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+  discount: string;
+  price: number;
+  originalPrice: number;
+}
+
+interface Category {
+  id: number;
+  name: string;
+  image: string;
+  bgColor: string;
+  textColor?: string;
+}
+
 export default async function Home() {
 
-  const categories = [
+  const categories: Category[] = [
     { id: 1 , name: 'Phones', image: '/Category-CellPhone.svg', bgColor: '' },
     { id: 2 , name: 'Computers', image: '/Category-Computer.svg', bgColor: '' },
     { id: 3 , name: 'Smart Watches', image: '/Category-SmartWatch.svg', bgColor: '' },
@@ -13,7 +33,7 @@ export default async function Home() {
     { id: 6 , name: 'Gaming', image: '/Category-Gamepad.svg', bgColor: '' }
   ];
 
-  let products = [];
+  let products: Product[] = [];
 
   let a = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/products`);
   let b = await a.json();
@@ -38,7 +58,7 @@ export default async function Home() {
       </div>
 
       <div className="BestProducts flex justify-between flex-wrap gap-6">
-        {products.map((product:any) => (
+        {products.map((product: Product) => (
           <Link href={`${product.name}`} key={product.id}>
             <div className="Product w-full sm:w-[270px] h-[350px] flex flex-col gap-3 items-center text-center">
               <div className="w-full sm:w-[270px] h-[250px] hover:scale-105 bg-[#F5F5F5] rounded relative">
@@ -81,7 +101,7 @@ export default async function Home() {
         </div>
 
         <div className="flex justify-between mb-6 flex-wrap gap-4">
-          {categories.map((category) => (
+          {categories.map((category: Category) => (
             <div
               key={category.id}
               className={`product1 w-full sm:w-[170px] h-[145px] border-2 border-slate-300 flex flex-col justify-center items-center gap-3 ${category.bgColor}`}
